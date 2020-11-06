@@ -1,4 +1,38 @@
 /* Your styles should be mobile-first and responsive */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body {
+  background: url("images/wallpaper.jpg");
+  background-size: cover;
+  font-family: Monsterrat;
+}
+
+header {
+  display: block;
+  margin: auto;
+}
+
+h1 {
+  color: whitesmoke;
+}
+
+form {
+  display: block;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 2%;
+  margin-right: 15%;
+  margin-left: 15%;
+}
+
+legend {
+  font-weight: bold;
+}
+
+img {
+  max-width: 300px;
+  display: block;
+  margin: auto;
+}
 
 /** 
   * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 

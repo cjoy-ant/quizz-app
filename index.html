@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Quiz App</title>
+  <title>Studio Ghibli Quiz</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
     type="text/css" />
   <link href="app.css" rel="stylesheet" type="text/css" />
@@ -13,9 +13,133 @@
 
 <body>
   <header>
-    <h1>The name of your quiz</h1>
+    <h1>Studio Ghibli Quiz</h1>
   </header>
-  <main></main>
+  <main>
+    <form class="start-quiz">
+      <button type="submit" id="start-quiz-button" required>Start Quiz</button>
+    </form>
+    <form class="question-form" id="question-form-1">
+      <fieldset>
+        <div class="question question-1">
+          <img src="images/question-1.jpg" alt="Studio Ghibli logo">
+          <legend>What year was the Japanese animation film studio, Studio Ghibli, founded?</legend>
+        </div>
+        <div class="answers answers-1">
+          <div class="answer-a">
+            <input type="radio" id="1a" required><label for="1a">1979</label>
+          </div>
+          <div class="answer-b">
+            <input type="radio" id="1b" required><label for="1b">1985</label>
+          </div>
+          <div class="answer-c">
+            <input type="radio" id="1c" required><label for="1c">1989</label>
+          </div>
+          <div class="answer-d">
+            <input type="radio" id="1d" required><label for="1d">1992</label>
+          </div>
+        </div>
+        <button type="submit" id="submit-1">Next Question</button>
+        <div class="current-score score-1">Your current score is</div>
+      </fieldset>
+    </form>
+    <form class="question-form" id="question-form-2">
+     <fieldset>
+       <div class="question question-2">
+         <img src="images/question-2.jpg" alt="Japanese animator">
+         <legend>Who of the following is not one of the co-founders of Studio Ghibli?</legend>
+       </div>
+       <div class="answers answers-2">
+         <div class="answer-a">
+           <input type="radio" id="2a" required><label for="2a">Hayao Miyazaki</label>
+         </div>
+         <div class="answer-b">
+           <input type="radio" id="2b" required><label for="2b">Takahata Isao</label>
+         </div>
+         <div class="answer-c">
+           <input type="radio" id="2c" required><label for="2c">Suzuki Toshio</label>
+         </div>
+         <div class="answer-d">
+           <input type="radio" id="2d" required><label for="2d">Hideaki Anno</label>
+         </div>
+       </div>
+       <button type="submit" id="submit-2">Next Question</button>
+       <div class="current-score score-2">Your current score is</div>
+     </fieldset>
+    </form>
+    <form class="question-form" id="question-form-3">
+     <fieldset>
+       <div class="question question-3">
+         <img src="images/question-3.jpg" alt="scene from Princess Mononoke">
+         <legend>A common theme throughout Studio Ghibli's animations is:</legend>
+       </div>
+       <div class="answers answers-3">
+         <div class="answer-a">
+           <input type="radio" id="3a" required><label for="3a">Environmentalism</label>
+         </div>
+         <div class="answer-b">
+           <input type="radio" id="3b" required><label for="3b">Dystopia</label>
+         </div>
+         <div class="answer-c">
+           <input type="radio" id="3c" required><label for="3c">Good VS. Evil</label>
+         </div>
+         <div class="answer-d">
+           <input type="radio" id="3d" required><label for="3d">Survival</label>
+         </div>
+       </div>
+       <button type="submit" id="submit-3">Next Question</button>
+       <div class="current-score score-3">Your current score is</div>
+     </fieldset>
+    </form>
+    <form class="question-form" id="question-form-4">
+      <fieldset>
+        <div class="question question-4">
+          <img src="images/question-4.jpg" alt="posters of various Studio Ghibli animations">
+          <legend>WWhich of the following is Studio Ghibli's highest grossing animation?</legend>
+        </div>
+        <div class="answers answers-4">
+          <div class="answer-a">
+            <input type="radio" id="4a" required><label for="4a">My Neighbor Totoro</label>
+          </div>
+          <div class="answer-b">
+            <input type="radio" id="4b" required><label for="4b">Spirited Away</label>
+          </div>
+          <div class="answer-c">
+            <input type="radio" id="4c" required><label for="4c">Howl's Moving Castle</label>
+          </div>
+          <div class="answer-d">
+            <input type="radio" id="4d" required><label for="4d">Princess Mononoke</label>
+          </div>
+        </div>
+        <button type="submit" id="submit-4">Next Question</button>
+        <div class="current-score score-4">Your current score is</div>
+      </fieldset>
+    <form class="question-form" id="question-form-5">
+      <fieldset>
+       <div class="question question-5">
+         <img src="images/question-5.jpg" alt="scene from Spirited Away">
+         <legend>Who of the following is not one of the co-founders of Studio Ghibli?</legend>
+       </div>
+       <div class="answers answers-5">
+         <div class="answer-a">
+           <input type="radio" id="5a" required><label for="5a">Jiufen, Taiwan</label>
+         </div>
+         <div class="answer-b">
+           <input type="radio" id="5b" required><label for="5b">Nara, Japan</label>
+         </div>
+         <div class="answer-c">
+           <input type="radio" id="5c" required><label for="5c">Xiamen, China</label>
+         </div>
+         <div class="answer-d">
+           <input type="radio" id="5d" required><label for="5d">Penang, Malaysia</label>
+         </div>
+       </div>
+       <button type="submit" id="submit-5">Finish Quiz</button>
+       <div class="current-score score-5">You got questions right!</div>
+       </div>
+      </fieldset>
+    </form>
+  </main>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
   <script src="app.js"></script>
 </body>
