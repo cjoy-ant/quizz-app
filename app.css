@@ -1,8 +1,11 @@
 /* Your styles should be mobile-first and responsive */
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+
+/* Structure */
 body {
-  background: url("images/wallpaper.jpg");
+  background: url("images/wallpaper.jpg") no-repeat center fixed;
   background-size: cover;
   font-family: Monsterrat;
 }
@@ -10,12 +13,23 @@ body {
 header {
   display: block;
   margin: auto;
+  justify-content: center;
+  text-align: center;
 }
 
-h1 {
-  color: whitesmoke;
+footer {
+  justify-content: center;
+  text-align: center;
 }
 
+/* Current Page */
+.correctChoice {
+
+}
+
+
+
+/* Question Form */
 form {
   display: block;
   background: rgba(255, 255, 255, 0.5);
@@ -33,6 +47,17 @@ img {
   display: block;
   margin: auto;
 }
+
+.currentQuestion {
+  display: block;
+}
+
+
+/* Type */
+h1 {
+  color: whitesmoke;
+}
+
 
 /** 
   * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 
