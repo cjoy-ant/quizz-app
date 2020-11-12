@@ -75,69 +75,70 @@ $(function() {
           'Nara, Japan',
           'Xiamen, China',
           'Penang, Malaysia'
-        ]
+        ],
+        correctAnswer: 'Jiufen, Taiwan'
       }
     ],
     quizStarted: false,
     currentQuestion: 0,
-    score: 0
+    score: 0,
+    submittedAnswer: true
   }
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
 // These functions return HTML templates
   
-  // generate HTML for start page
-
+  // generates HTML for start page
   function generateStartPage () {
-    return
-      `
-      <div class="start-page">
+    if (STORE.quizStarted === false) {
+      return
+        `
+        <div class="start-page">
           <h2>Welcome! I hope you like anime!</h2>
           <p>This is a short and sweet quiz about Studio Ghibli, the Disney of Japanese animation.</p>
-        <button type="submit" id="start-quiz-btn">Start Quiz</button>
-      </div>
-      `
-    ;
+          <button type="submit" id="start-quiz-btn">Start Quiz</button>
+        </div>
+        `;
+    }
   }
 
   // generates HTML for question number
   function generateQuestionNumber () {
-    return
+    return `
       <span class="question-number">
         <h2>Question </h2> + ${STORE.currentQuestion}
       </span>
-    ;
+      `;
   }
 
   // generate HTML for current score
   function generateScore () {
-    return
+    return `
       <span class="score">
         <h2>Your current score is </h2> + ${currentScore}
       </span>
-    ;
+      `;
   }
 
   // generates HTML for answers
-
   function generateAnswers () {
     let answerOptions = "";
     let questionIndex = 0;
     for (let i = 0; i < STORE.questions.answers.length; i++) {
-      questionIndex = 
     }
-    
-  function currentQuestion () {
-    let index = STORE.questionNumber;
-    let currentQuestion = store.questions[index];
+  }
+
+  // finds what is the current questionNumber
+  function questionNumber () {
+    let index = STORE.currentQuestion;
+    let questionNumber = store.questions[index];
     return {
       index = index + 1;
     }
   }
   
   // generates HTML for current question
-
   function generateQuestion () {
     return `
       <div class="questionsAndAnswers">
@@ -279,18 +280,17 @@ $(function() {
 
   // runs all of the functions for the quiz
   function runQuiz () {
+    generateStartPage();
     renderQuiz();
     handleStartQuiz();
     handleSubmitAnswer();
     handleNextQuestion();
     handleSeeResults();
     handleRestartQuiz();
-
   }
-
-  $(runQuiz);
-
 });
+
+$(runQuiz);
 
   /***
   // create variables to hold information about what question the user is on (currentQuestion)
