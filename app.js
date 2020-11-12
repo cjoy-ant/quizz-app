@@ -101,7 +101,7 @@ $(function() {
     ;
   }
 
-  // generate HTML for question number
+  // generates HTML for question number
   function generateQuestionNumber () {
     return
       <span class="question-number">
@@ -119,21 +119,25 @@ $(function() {
     ;
   }
 
-  // generate HTML for answers
+  // generates HTML for answers
 
   function generateAnswers () {
-    let answersArray = STORE.questions[currentQuestion].answers;
-    let answersHTML = "";
-    let i=0;
-    answersArray.forEach() {
-      <div class="answers-container">
-        <input type="radio" value="${answer}" required></input>
-        <label for=""></label>
-      </div>
+    let answerOptions = "";
+    let questionIndex = 0;
+    for (let i = 0; i < STORE.questions.answers.length; i++) {
+      questionIndex = 
+    }
+    
+  function currentQuestion () {
+    let index = STORE.questionNumber;
+    let currentQuestion = store.questions[index];
+    return {
+      index = index + 1;
     }
   }
+  
+  // generates HTML for current question
 
-  // generate HTML for question form
   function generateQuestion () {
     return `
       <div class="questionsAndAnswers">
@@ -158,7 +162,7 @@ $(function() {
       `;
   }
 
-  // generate HTML for results page
+  // generates HTML for results page
   function generateResults () {
     return 
       `
@@ -199,17 +203,25 @@ $(function() {
     STORE.quizStarted = true;
   }
 
+  // finds which question to display to the user
+  // changes value of STORE.currentQuestion to the current question number
   function currentQuestion () {
     let index = STORE.questionNumber;
     let thisQuestion = store.questions[index];
     return {
       index++,
     }
+  }
 
-    
+  // checks if answer is correct
+  // displays results for current question
+  // next question button is available
+  function checkAnswer () {
+
   }
 
   // changes state of quizStarted to false
+  // changes the questionNumber to 0
   function restartQuiz () {
     store.quizStarted = false;
     store.questionNumber = 0;
@@ -220,6 +232,7 @@ $(function() {
 
 // These functions handle events (submit, click, etc)
 
+  // listens for when user clisk start-quiz-btn
   function handleStartQuiz() {
     $('main').on('click', '#start-quiz-btn', event => {
       event.preventDefault();
@@ -228,26 +241,34 @@ $(function() {
     });
   }
 
+  // listens for when the user submits the question-form
   function handleSubmitAnswer() {
-    $('body').on('submit', '#question-form', event => {
+    $('main').on('submit', '#question-form', event => {
+      event.preventDefault();
+      checkAnswer();
       renderQuiz();
     });
   }
 
+  // listens for when user clicks the next-question-btn
   function handleNextQuestion() {
-    $('body').on('click', '#next-question-btn', event => {
+    $('main').on('click', '#next-question-btn', event => {
       event.preventDefault();
       nextQuestion();
       renderQuiz();
     }
   }
 
+  // listens for when user clicks the see-results-btn
   function handleSeeResults () {
     $('main').on('click', '#see-results-btn', event => {
       event.preventDefault();
+      seeResults ();
     }
   }
 
+  // listens for when user clisk the restart-quiz-btn
+  // only available on last question page
   function handleRestartQuiz() {
     $('main').on('click', '#restart-quiz-btn', event => {
       event.preventDefault();
@@ -256,17 +277,18 @@ $(function() {
     });
   }
 
-function runQuiz () {
-  renderQuiz();
-  handleStartQuiz();
-  handleSubmitAnswer();
-  handleNextQuestion();
-  handleSeeResults();
-  handleRestartQuiz();
+  // runs all of the functions for the quiz
+  function runQuiz () {
+    renderQuiz();
+    handleStartQuiz();
+    handleSubmitAnswer();
+    handleNextQuestion();
+    handleSeeResults();
+    handleRestartQuiz();
 
-}
+  }
 
-$(runQuiz);
+  $(runQuiz);
 
 });
 
@@ -285,6 +307,18 @@ $(runQuiz);
     });
   }
 
+
+  function generateAnswers () {
+  let answersArray = STORE.questions[currentQuestion].answers;
+  let answersHTML = "";
+  let i=0;
+  answersArray.forEach() {
+    <div class="answers-container">
+      <input type="radio" value="${answer}" required></input>
+      <label for=""></label>
+    </div>
+  }
+}
   // display form for currentQuestion
 
   function displayQuestion () {
