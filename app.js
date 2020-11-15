@@ -126,9 +126,14 @@ function generateAnswers(){
 }
 
   // check if submitted answer matches correctAnswer
+  // THINGS TO FIX:
+  // How to make it REQUIRED to select an answer before submitting (moved this to handleSubmitAnswer)
+  // Once an answer option is selected and submitted
+  // How do I make var selectedAnswer = (value of the answer option that is selected/submitted)
+
   function submitAnswer() {
     console.log("Submitting Answer");
-    let selectedAnswer = $("input[type=radio][name=answer-options]:checked").val();
+    let selectedAnswer = $("input[type=radio][name=answer-options]:checked");
     let index = STORE.currentQuestion
     let isCorrect = false;
     if (selectedAnswer === STORE.questions[index].correctAnswer) {
@@ -242,12 +247,22 @@ function handleStartQuiz() {
 function handleSubmitAnswer() {
   $('main').on('click', '#submit-answer-btn', event => {
     event.preventDefault();
-    submittingAnswer = true;
-    submitAnswer();
-    checkAnswer();
-    
-    $('#submit-answer-btn').hide();
-    $('#next-question-btn').show();
+    let selected = $("input[type=radio][name=answer-options]:checked");
+    if (selected.length > 0) {
+      submitAnswer();
+      checkAnswer();
+      $('#submit-answer-btn').hide();
+      $('#next-question-btn').show();
+    }
+    else {
+      console.log("User did not select an answer");
+      return `
+      <div class="select-answer-required">
+          <p>You must select option before moving on.</p>
+      </div>
+      `;
+    }
+    return selected;
   });
 }
 

@@ -1,1 +1,1 @@
-### Boilerplate app structure for Quiz App project
+### This is my Studio Ghibli Quiz for Thinkful's Quiz App Assignment
