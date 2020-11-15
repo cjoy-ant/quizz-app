@@ -7,7 +7,7 @@
 body {
   background: url("images/wallpaper.jpg") no-repeat center fixed;
   background-size: cover;
-  font-family: Monsterrat;
+  font-family: Montserrat;
 }
 
 header {
@@ -22,32 +22,44 @@ footer {
   text-align: center;
 }
 
-/* Start Page */
+/********** Start Page **********/
 .start-quiz-page, form, .results-page {
   display: block;
-  background: rgba(255, 255, 255, 0.5);
-  padding: 2%;
-  margin-right: 15%;
-  margin-left: 15%;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 5%;
+  margin-right: 10%;
+  margin-left: 10%;
 }
 
-.start-quiz-button, .restart-quiz-button {
-  text-align: center;
-  padding: 2%;
+/********** Question Form **********/
+fieldset {
+  border: 2px #1B7286;
 }
 
 legend {
+  border: 2px #1B7286;
+  line-height: 2px;
+  color: #1B606F;
   font-weight: bold;
 }
 
-.currentQuestion {
+.currentQuestion, .answers-container {
   display: block;
 }
 
+.correct-answer, .wrong-answer {
+  text-align: center;
+}
 
-/* Type */
+ul {
+  list-style: none;
+  padding-left: 5%;
+}
+
+
+/********** Type **********/
 h1 {
-  font-size: 38px;
+  font-size: 26px;
   color: whitesmoke;
 }
 
@@ -57,31 +69,135 @@ h2 {
 
 h3 {
   font-size: 14px;
+  text-transform: uppercase;
 }
 
-ul {
-  list-style: none;
+p, ul {
+  font-size: 14px;
 }
 
-/* Elements */
-img {
+/********** Elements **********/
+.start-quiz-page img, .question img {
   max-width: 100%;
   display: block;
   margin: auto;
 }
 
-.answers-container .correct-answer .wrong-answer img {
+.answers-container img, .correct-answer img, .wrong-answer img {
   display: block;
   max-width: 50%;
-  justify-content: center;
+  margin: auto;
 }
 
-/* Buttons */
+/********** Buttons **********/
+
+button {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius: 10px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+  color:#1B7286;
+  font-family: Montserrat;
+	font-size:14px;
+	font-weight:bold;
+  padding:6px 24px;
+  text-transform: uppercase;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+
+.start-quiz-button, .restart-quiz-button {
+  text-align: center;
+  padding: 2%;
+}
+
+.question-form-buttons {
+  text-align: center;
+}
 
 #next-question-btn {
   display: none;
 }
 
+/********** Small Mobile **********/
+@media all and (max-width: 400px) {
+  /********** Start Page **********/
+  .start-quiz-page {
+    padding: 5%;
+    margin: 5%;
+  }
+
+  /********** Question Form **********/
+  form {
+    padding: 5%;
+    margin: 5%;
+  }
+
+  ul {
+    padding-left: 0px;
+  }
+
+  /********** Type **********/
+  h2 {
+    font-size: 12px;
+  }
+  
+  h3, p, ul {
+    font-size: 10px;
+  }
+
+  /********** Elements **********/
+  button {
+    font-size: 10px;
+  }
+}
+
+/********** Desktop **********/
+@media all and (min-width: 800px) {
+  /********** Margins & Padding **********/
+.start-quiz-page, form {
+  padding-top: 2%;
+  padding-right: 5%;
+  padding-bottom: 2%;
+  padding-left: 5%;
+  margin-right: 25%;
+  margin-left: 25%;
+}
+
+header {
+  padding: 10px 0 10px 0;
+}
+  
+  /********** Type **********/
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3, p, ul {
+    font-size: 18px;
+  }
+
+  /********** Elements **********/
+  .start-quiz-page img, .question img {
+    max-width: 75%;
+  }
+
+  .answers-container img {
+    max-width: 35%;
+  }
+
+  button {
+    font-size: 18px;
+  }
+
+}
 /** 
   * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 
   *

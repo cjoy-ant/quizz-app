@@ -93,7 +93,7 @@ function generateStartPage() {
      <h2>Welcome! I hope you like anime!</h2>
      <p>This is a short and sweet quiz about Studio Ghibli, the Disney of Japanese animation.</p>
      <div class="start-quiz-button">
-       <button type="submit" id="start-quiz-btn">Start Quiz</button>
+       <button type="button" id="start-quiz-btn">Start Quiz</button>
      </div>
    </div>
   `;
@@ -116,14 +116,14 @@ function generateAnswers(){
     let answerOptions = "";
     for(let i=0; i < answersArray.length; i++) {
         answerOptions += `
-          <div id="option-container-${i}">
-              <input type="radio" name="answer-options" id="option-${i+1}" value="${answersArray[i]}" required>
+          <div id="option-container-${i+1}">
+              <input type="radio" name="answer-options" id="option-${i+1}" value="${answersArray[i]}" tabindex="${i+1}" required>
               <label for="option-${i+1}">${answersArray[i]}</label>
           </div>
         `;
       }
     return `
-      <div class="answers-container">
+      <div class="answer-options-list">
       ${answerOptions}
       </div>
      `;
@@ -136,7 +136,7 @@ function generateAnswers(){
       <br>
       <div class="correct-answer">
         <img src="images/correct-answer.jpg">
-        <p><b>You are correct!</b></p>
+        <h2>Great Job! That is correct!</h2>
       </div>
     `
   }
@@ -148,7 +148,7 @@ function generateAnswers(){
       <br>
       <div class="wrong-answer">
         <img src="images/wrong-answer.jpg">
-        <p><b>Sorry! That was the wrong answer.</b></p>
+        <h2>Sorry! That was the wrong answer.</h2>
         <p>The correct answer is '<b>${STORE.questions[STORE.currentQuestion].correctAnswer}</b>'</p>
       </div>
     `
@@ -176,22 +176,9 @@ function checkAnswer() {
     console.log("Correct Answer");
     STORE.score++;
     $('.answers-container').append(correctAnswerHtml());
-//   return `
-//     <div class="correct-answer">
-//       <img src="images/correct-answer.jpg">
-//       <p>You are correct!</p>
-//     </div>
-//   `;
   } else {
     console.log("Wrong Answer");
     $('.answers-container').append(wrongAnswerHtml());
-//    return `
-//      <div class="wrong-answer">
-//        <img src="images/wrong-answer.jpg">
-//        <p>Sorry! That was the wrong answer.</p>
-//        <p>The correct answer is ${STORE.questions[index].correctAnswer}</p>
-//      </div>
-//    `;
   }
 }
   
@@ -210,13 +197,16 @@ function generateQuestion() {
               <img src="${STORE.questions[STORE.currentQuestion].picture}">
               <h2>${STORE.questions[STORE.currentQuestion].question}</h2>
             </div>
-            <div class="answer-options">
+            <div class="answers-container">
               <ul>
                   ${generateAnswers()}
               </ul>
             </div>
-            <button type="submit" id="submit-answer-btn">Submit</button>
-            <button type="button" id="next-question-btn">Next</button>
+            <div class="question-form-buttons">
+              <br>
+              <button type="button" id="submit-answer-btn" tabindex="5">Submit</button>
+              <button type="button" id="next-question-btn" tabindex="5">Next</button>
+            </div>
           </fieldset>
         </form>
       </div>
@@ -326,6 +316,8 @@ function runQuiz () {
   nextQuestion();
   submitAnswer();
   checkAnswer();
+  correctAnswerHtml();
+  wrongAnswerHtml();
   generateResults();
   handleStartQuiz();
   handleSubmitAnswer();
