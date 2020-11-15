@@ -138,6 +138,7 @@ function generateAnswers(){
       submittingAnswer = true;
     }
     return isCorrect;
+    
   }
 
 // generate HTML for answer results for each question
@@ -176,6 +177,7 @@ function generateQuestion() {
               <h3>Current Score: ${STORE.score} / ${STORE.questions.length}</h3>
             </legend>
             <div class="question">
+              <img src="${STORE.questions[STORE.currentQuestion].picture}">
               <h2>${STORE.questions[STORE.currentQuestion].question}</h2>
             </div>
             <div class="answer-options">
@@ -245,6 +247,7 @@ function handleSubmitAnswer() {
     submitAnswer();
     checkAnswer();
     
+    $('#submit-answer-btn').hide();
     $('#next-question-btn').show();
   });
 }
