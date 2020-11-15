@@ -22,20 +22,18 @@ footer {
   text-align: center;
 }
 
-/* Current Page */
-.correctChoice {
-
-}
-
-
-
-/* Question Form */
-form {
+/* Start Page */
+.start-quiz-page, form, .results-page {
   display: block;
   background: rgba(255, 255, 255, 0.5);
   padding: 2%;
   margin-right: 15%;
   margin-left: 15%;
+}
+
+.start-quiz-button, .restart-quiz-button {
+  text-align: center;
+  padding: 2%;
 }
 
 legend {
@@ -55,9 +53,32 @@ img {
 
 /* Type */
 h1 {
+  font-size: 38px;
   color: whitesmoke;
 }
 
+h2 {
+  font-size: 16px;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Elements */
+.welcome-img {
+  max-width: 100%;
+}
+
+/* Buttons */
+
+#next-question-btn {
+  display: none;
+}
 
 /** 
   * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 
