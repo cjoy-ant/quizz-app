@@ -127,29 +127,26 @@ function generateAnswers(){
 
   // check if submitted answer matches correctAnswer
   function submitAnswer() {
-    console.log("Checking Answer");
-    let selectedAnswer = $("input[type='radio'][name='answer-options']:checked").val();
+    console.log("Submitting Answer");
+    let selectedAnswer = $("input[type=radio][name=answer-options]:checked").val();
     let index = STORE.currentQuestion
     let isCorrect = false;
     if (selectedAnswer === STORE.questions[index].correctAnswer) {
-      submittingAnswer = true;
       isCorrect = true;
-    } else {
-      submittingAnswer = true;
     }
     return isCorrect;
-    
   }
 
 // generate HTML for answer results for each question
 function checkAnswer() {
-  console.log("Generating Response");
+  console.log("Checking Answer");
   let index = STORE.currentQuestion;
   if (submitAnswer() === true) {
     console.log("Correct Answer");
     STORE.score += 1
     return `
       <div class="correct-answer">
+        <img src="images/correct-answer.jpg">
         <p>You are correct!</p>
       </div>
     `;
@@ -158,6 +155,7 @@ function checkAnswer() {
     console.log("Wrong Answer");
     return `
       <div class="wrong-answer">
+        <img src="images/wrong-answer.jpg">
         <p>Sorry! That was the wrong answer.</p>
         <p>The correct answer is ${STORE.questions[index].correctAnswer}</p>
       </div>
@@ -244,6 +242,7 @@ function handleStartQuiz() {
 function handleSubmitAnswer() {
   $('main').on('click', '#submit-answer-btn', event => {
     event.preventDefault();
+    submittingAnswer = true;
     submitAnswer();
     checkAnswer();
     

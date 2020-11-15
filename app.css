@@ -40,12 +40,6 @@ legend {
   font-weight: bold;
 }
 
-img {
-  max-width: 300px;
-  display: block;
-  margin: auto;
-}
-
 .currentQuestion {
   display: block;
 }
@@ -70,12 +64,10 @@ ul {
 }
 
 /* Elements */
-.welcome-img {
+img {
   max-width: 100%;
-}
-
-.question img {
-  max-width: 100%;
+  display: block;
+  margin: auto;
 }
 
 /* Buttons */
