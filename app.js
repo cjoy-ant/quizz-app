@@ -218,6 +218,7 @@ function generateResults(){
   console.log("Generating Results");
   return `
     <div class="results-page">
+      <img src="images/results-page.jpg">
       <h2>Congratulations on finishing this quiz!</h2>
       <h2>You scored ${STORE.score}/${STORE.questions.length}</h2>
       <div class="restart-quiz-button">

@@ -56,10 +56,14 @@ ul {
   padding-left: 5%;
 }
 
+/********** Results Page **********/
+.results-page {
+  text-align: center;
+}
 
 /********** Type **********/
 h1 {
-  font-size: 26px;
+  font-size: 38px;
   color: whitesmoke;
 }
 
@@ -77,7 +81,7 @@ p, ul {
 }
 
 /********** Elements **********/
-.start-quiz-page img, .question img {
+.start-quiz-page img, .question img, .results-page img {
   max-width: 100%;
   display: block;
   margin: auto;
@@ -156,7 +160,7 @@ button {
 }
 
 /********** Desktop **********/
-@media all and (min-width: 800px) {
+@media all and (min-width: 1000px) {
   /********** Margins & Padding **********/
 .start-quiz-page, form {
   padding-top: 2%;
@@ -173,7 +177,7 @@ header {
   
   /********** Type **********/
   h1 {
-    font-size: 40px;
+    font-size: 48px;
   }
 
   h2 {
@@ -185,7 +189,7 @@ header {
   }
 
   /********** Elements **********/
-  .start-quiz-page img, .question img {
+  .start-quiz-page img, .question img, .results-page img {
     max-width: 75%;
   }
 
