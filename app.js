@@ -110,30 +110,56 @@ function nextQuestion() {
 
 // generates HTML for answer of current question
 function generateAnswers(){
-  console.log("Generating Answer Options");
+    console.log("Generating Answer Options");
+  
+    let answersArray = STORE.questions[STORE.currentQuestion].answers;
+    let answerOptions = "";
+    for(let i=0; i < answersArray.length; i++) {
+        answerOptions += `
+          <div id="option-container-${i}">
+              <input type="radio" name="answer-options" id="option-${i+1}" value="${answersArray[i]}" required>
+              <label for="option-${i+1}">${answersArray[i]}</label>
+          </div>
+        `;
+      }
+    return `
+      <div class="answers-container">
+      ${answerOptions}
+      </div>
+     `;
+  }
 
-  let answersArray = STORE.questions[STORE.currentQuestion].answers;
-  let answerOptions = "";
-  for(let i=0; i < answersArray.length; i++) {
-      answerOptions += `
-        <div id="option-container-${i}">
-            <input type="radio" name="answer-options" id="option${i+1} value="${answersArray[i]}" required>
-            <label for="option${i+1}">${answersArray[i]}</label>
-        </div>
-      `;
-    }
-  return answerOptions;
-}
+  // generate HTML for correct answer
+  function correctAnswerHtml() {
+    console.log("Generating Correct Answer Response");
+    return `
+      <br>
+      <div class="correct-answer">
+        <img src="images/correct-answer.jpg">
+        <p><b>You are correct!</b></p>
+      </div>
+    `
+  }
+
+  // generate HTML for wrong answer
+  function wrongAnswerHtml() {
+    console.log("Generating Wrong Answer Response");  
+    return `
+      <br>
+      <div class="wrong-answer">
+        <img src="images/wrong-answer.jpg">
+        <p><b>Sorry! That was the wrong answer.</b></p>
+        <p>The correct answer is '<b>${STORE.questions[STORE.currentQuestion].correctAnswer}</b>'</p>
+      </div>
+    `
+  }
 
   // check if submitted answer matches correctAnswer
   // THINGS TO FIX:
   // How to make it REQUIRED to select an answer before submitting (moved this to handleSubmitAnswer)
-  // Once an answer option is selected and submitted
-  // How do I make var selectedAnswer = (value of the answer option that is selected/submitted)
-
   function submitAnswer() {
     console.log("Submitting Answer");
-    let selectedAnswer = $("input[type=radio][name=answer-options]:checked");
+    let selectedAnswer = $("input[type=radio][name=answer-options]:checked").val();
     let index = STORE.currentQuestion
     let isCorrect = false;
     if (selectedAnswer === STORE.questions[index].correctAnswer) {
@@ -148,23 +174,24 @@ function checkAnswer() {
   let index = STORE.currentQuestion;
   if (submitAnswer() === true) {
     console.log("Correct Answer");
-    STORE.score += 1
-    return `
-      <div class="correct-answer">
-        <img src="images/correct-answer.jpg">
-        <p>You are correct!</p>
-      </div>
-    `;
-  }
-  else {
+    STORE.score++;
+    $('.answers-container').append(correctAnswerHtml());
+//   return `
+//     <div class="correct-answer">
+//       <img src="images/correct-answer.jpg">
+//       <p>You are correct!</p>
+//     </div>
+//   `;
+  } else {
     console.log("Wrong Answer");
-    return `
-      <div class="wrong-answer">
-        <img src="images/wrong-answer.jpg">
-        <p>Sorry! That was the wrong answer.</p>
-        <p>The correct answer is ${STORE.questions[index].correctAnswer}</p>
-      </div>
-    `;
+    $('.answers-container').append(wrongAnswerHtml());
+//    return `
+//      <div class="wrong-answer">
+//        <img src="images/wrong-answer.jpg">
+//        <p>Sorry! That was the wrong answer.</p>
+//        <p>The correct answer is ${STORE.questions[index].correctAnswer}</p>
+//      </div>
+//    `;
   }
 }
   
@@ -274,14 +301,6 @@ function handleNextQuestion() {
     renderQuiz();
   });
 }
-
-// listen for when user clicks the see-results-btn
-//function handleSeeResults () {
-//  $('main').on('click', '#see-results-btn', event => {
-//    event.preventDefault();
-//    seeResults ();
-//  });
-//}
 
 // listen for when user clisk the restart-quiz-btn
 // only available on results page
