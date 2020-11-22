@@ -249,7 +249,7 @@ function renderQuiz() {
 /********** EVENT HANDLER FUNCTIONS **********/
 // These functions handle events (submit, click, etc)
 
-// listen for when user clisk start-quiz-btn
+// listen for when user clicks #start-quiz-btn
 function handleStartQuiz() {
   $('main').on('click', '#start-quiz-btn', event => {
     event.preventDefault();
